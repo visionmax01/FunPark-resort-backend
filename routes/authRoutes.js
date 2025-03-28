@@ -1,14 +1,17 @@
 import express from 'express';
-import { register, login, getUserData } from '../controllers/authController.js';
+import { register, login, getUserData, updateUserData, requestPasswordReset, verifyOTP, resetPassword, changePassword, requestPasswordChangeOTP } from '../controllers/authController.js';
+import { auth } from '../middleware/auth.js';
 
 const router = express.Router();
 
 router.post('/register', register);
 router.post('/login', login);
-
-
-
-// Define the route to get logged-in user data
-router.get('/user', getUserData);
+router.get('/user', auth, getUserData);
+router.put('/update', auth, updateUserData);
+router.post('/forgot-password', requestPasswordReset);
+router.post('/verify-otp', verifyOTP);
+router.post('/reset-password', resetPassword);
+router.put('/change-password', auth, changePassword);
+router.post('/request-password-change-otp', auth, requestPasswordChangeOTP);
 
 export default router;

@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import bcrypt from 'bcryptjs';
 
 const UserSchema = new mongoose.Schema({
     name: String,
@@ -9,14 +8,10 @@ const UserSchema = new mongoose.Schema({
     phone: String,
     address: String,
     password: String,
-    role: { type: Number, default: 0 } // 0 for normal user, 1 for admin
-});
-
-UserSchema.pre('save', async function (next) {
-    if (this.isModified('password')) {
-        this.password = await bcrypt.hash(this.password, 8);
-    }
-    next();
+    role: { type: Number, default: 0 }, // 0 for normal user, 1 for admin
+    resetPasswordOTP: String,
+    resetPasswordToken: String,
+    resetPasswordExpires: Date
 });
 
 export default mongoose.model('User', UserSchema);
