@@ -12,7 +12,7 @@ const app = express();
 
 // Configure CORS to allow requests from Netlify frontend
 app.use(cors({
-  origin: ['https://growlitetech.netlify.app', 'https://growlite.bhishansah.com.np', 'http://localhost:3000', 'http://localhost:5173'],
+  origin: ['https://hotelresort.bhishansah.com.np', 'http://localhost:3000', 'http://localhost:5173'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
