@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
     role: { type: Number, default: 0 }, // 0 for normal user, 1 for admin
     resetPasswordOTP: String,
     resetPasswordToken: String,
-    resetPasswordExpires: Date
+    resetPasswordExpires: Date,
 });
 
 export default mongoose.model('User', UserSchema);
